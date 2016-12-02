@@ -16,4 +16,4 @@
 # Using secret_token for rails3 compatibility. Change to secret_key_base
 # to avoid deprecation warning.
 # Can be safely removed in a rails3 api-only application.
-Arbeit::Application.config.secret_token = 'faa59d26dfae236501d440dd3e5e384a24eaaa2d641484fbd95d3e906c75ab98ffec1b2b7eefd7ad869e5082cc01d8fc21f48013d25c52fc40838fc23d1378ac'
+TaskManager::Application.config.secret_token = 'faa59d26dfae236501d440dd3e5e384a24eaaa2d641484fbd95d3e906c75ab98ffec1b2b7eefd7ad869e5082cc01d8fc21f48013d25c52fc40838fc23d1378ac'

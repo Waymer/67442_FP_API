@@ -11,7 +11,7 @@ Bundler.require(*Rails.groups)
 # SETTINGS.merge! SETTINGS.fetch(Rails.env, {})
 # SETTINGS.symbolize_keys!
 
-module Arbeit
+module TaskManager
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
