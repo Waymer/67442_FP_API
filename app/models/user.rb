@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # Use built-in rails support for password protection
-  has_secure_password
+  #has_secure_password
     
   # Relationships
   # -----------------------------
@@ -21,10 +21,10 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :email  
   validates_uniqueness_of :email, allow_blank: true
   validates_format_of :email, :with => /\A[\w]([^@\s,;]+)@(([a-z0-9.-]+\.)+(com|edu|org|net|gov|mil|biz|info))\z/i, :message => "is not a valid format", :allow_blank => true
-  validates_presence_of :password, on: :create 
-  validates_presence_of :password_confirmation, on: :create 
-  validates_confirmation_of :password, message: "does not match"
-  validates_length_of :password, minimum: 4, message: "must be at least 4 characters long", allow_blank: true
+  # validates_presence_of :password, on: :create 
+  # validates_presence_of :password_confirmation, on: :create 
+  # validates_confirmation_of :password, message: "does not match"
+  # validates_length_of :password, minimum: 4, message: "must be at least 4 characters long", allow_blank: true
   
   # Other methods
   # -----------------------------  
@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   end
 
   # for use in authorizing with CanCan
-  ROLES = [['Administrator', :admin],['Member', :member]]
+  ROLES = [['Administrator', :admin],['Member', :member], ['Manager', :manager]]
 
   def role?(authorized_role)
     return false if role.nil?
@@ -45,8 +45,8 @@ class User < ActiveRecord::Base
   end
 
   # login by email address
-  def self.authenticate(email, password)
-    find_by_email(email).try(:authenticate, password)
-  end
+  # def self.authenticate(email, password)
+  #   find_by_email(email).try(:authenticate, password)
+  # end
 
 end
