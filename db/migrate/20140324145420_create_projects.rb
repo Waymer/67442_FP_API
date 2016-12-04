@@ -5,8 +5,9 @@ class CreateProjects < ActiveRecord::Migration
       t.text :description
       t.date :start_date
       t.date :end_date
-      t.integer :domain_id
+      #t.integer :domain_id
       t.integer :manager_id
+      t.integer :creator_id
 
       t.timestamps
     end
