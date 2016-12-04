@@ -21,20 +21,13 @@ ActiveRecord::Schema.define(version: 20140324145745) do
     t.datetime "updated_at"
   end
 
-  create_table "domains", force: :cascade do |t|
-    t.string   "name"
-    t.boolean  "active",     default: true
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.date     "start_date"
     t.date     "end_date"
-    t.integer  "domain_id"
     t.integer  "manager_id"
+    t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
