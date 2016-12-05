@@ -5,7 +5,6 @@ class Project < ActiveRecord::Base
   has_many :tasks
   has_many :assignments
   has_many :users, through: :assignments
-  belongs_to :domain
   belongs_to :manager, class_name: "User", foreign_key: "manager_id"
   belongs_to :creator, class_name: "User", foreign_key: "creator_id"
   
@@ -13,7 +12,7 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :tasks, reject_if: ->(task) { task[:name].blank? }, allow_destroy: true
   
   # Delegations
-  delegate :name, to: :domain, prefix: true
+  #delegate :name, to: :domain, prefix: true
   delegate :name, to: :manager, prefix: true
   delegate :proper_name, to: :manager, prefix: true
 
@@ -28,7 +27,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :name
   validates_date :start_date
   validates_date :end_date, after: :start_date, allow_blank: true
-  validate :domain_is_active_in_system
+  #validate :domain_is_active_in_system
     
   # Callbacks
   before_destroy :is_destroyable?

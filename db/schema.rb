@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140324145745) do
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
+    t.string   "ptype"
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "manager_id"

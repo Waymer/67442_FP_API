@@ -11,7 +11,7 @@ namespace :db do
     require 'faker'
     
     # Step 1: clear any old data in the db
-    [Assignment, Task, Domain, Project, User].each(&:delete_all)
+    [Assignment, Task, Project, User].each(&:delete_all)
     
     
     # Step 2: add Prof. H as a default member and manager for every default project
@@ -19,25 +19,25 @@ namespace :db do
     u.first_name = "Professor"
     u.last_name = "Heimann"
     u.email = "profh@cmu.edu"
-    u.password = "secret"
-    u.password_confirmation = "secret"
+    # u.password = "secret"
+    # u.password_confirmation = "secret"
     u.active = true
     u.role = "admin"
     u.save!
     
     
     # Step 3: add some domains to work with (small set for now...)
-    domains = %w[Software Personal Academic]
-    domains.sort.each do |domain|
-      d = Domain.new
-      d.name = domain
-      d.save!
-    end
+    # domains = %w[Software Personal Academic]
+    # domains.sort.each do |domain|
+    #   d = Domain.new
+    #   d.name = domain
+    #   d.save!
+    # end
     
     
     # Step 4: add some projects to work with (just four for now)
     projects = %w[ChoreTracker Proverbs Arbeit BookManager]
-    domain_id = Domain.find_by_name('Software').id  # all projects are software projects
+    #domain_id = Domain.find_by_name('Software').id  # all projects are software projects
     manager_id = User.first.id                      # Prof. H manages all the default projects
     
     projects.sort.each do |project|
@@ -48,8 +48,10 @@ namespace :db do
       ends = rand(3) + 3
       p.start_date = started.months.ago.to_date
       p.end_date = ends.months.from_now.to_date
-      p.domain_id = domain_id
+      #p.domain_id = domain_id
+      p.ptype = "IOS class"
       p.manager_id = manager_id
+      p.creator_id = manager_id
       p.save!
     end
     
@@ -70,8 +72,8 @@ namespace :db do
       user.first_name = Faker::Name.first_name
       user.last_name = Faker::Name.last_name
       user.email = "#{user.first_name.downcase}.#{user.last_name.downcase}@example.com"
-      user.password = "secret"
-      user.password_confirmation = "secret"
+      # user.password = "secret"
+      # user.password_confirmation = "secret"
       user.active = true
       user.role = "member"
       user.save!

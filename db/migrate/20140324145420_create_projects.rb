@@ -3,6 +3,7 @@ class CreateProjects < ActiveRecord::Migration
     create_table :projects do |t|
       t.string :name
       t.text :description
+      t.string :ptype
       t.date :start_date
       t.date :end_date
       #t.integer :domain_id

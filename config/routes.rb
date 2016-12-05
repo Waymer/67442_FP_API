@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :assignments, except: [:new, :edit]
   resources :users, except: [:new, :edit]
   resources :projects, except: [:new, :edit]
-  resources :domains, except: [:new, :edit]
+  #resources :domains, except: [:new, :edit]
   resources :sessions
   
   # Authentication routes
